@@ -18,9 +18,9 @@ namespace ServiceDA
             connection.Open();
             SqlCommand myCommand = new SqlCommand();
             myCommand.Connection = connection;
-            myCommand.CommandText = "INSERT INTO TJalon ([TJal_Libelle],[TJal_DateLivraisonTheorique],[TJal_Responsable],[TJal_DateLivraisonReel],[TJal_FK_TPro]) VALUES (@TJal_Libelle,@TJal_DateLivraisonTheorique,@TJal_Responsable,@TJal_DateLivraisonReel,@TJal_FK_TPro)";
+            myCommand.CommandText = "INSERT INTO TJalon ([TJal_Libelle],[TJal_DateLivraisonPrevue],[TJal_Responsable],[TJal_DateLivraisonReel],[TJal_FK_TPro]) VALUES (@TJal_Libelle,@TJal_DateLivraisonPrevue,@TJal_Responsable,@TJal_DateLivraisonReel,@TJal_FK_TPro)";
             myCommand.Parameters.Add(new SqlParameter("@TJal_Libelle", jalon.jal_libelle));
-            myCommand.Parameters.Add(new SqlParameter("@TJal_DateLivraisonTheorique", jalon.jal_dateLivraisonTheorique));
+            myCommand.Parameters.Add(new SqlParameter("@TJal_DateLivraisonPrevue", jalon.jal_dateLivraisonPrevue));
             myCommand.Parameters.Add(new SqlParameter("@TJal_Responsable", jalon.jal_responsable));
             myCommand.Parameters.Add(new SqlParameter("@TJal_DateLivraisonReel", jalon.jal_dateLivraisonReel));
             myCommand.Parameters.Add(new SqlParameter("@TJal_FK_TPro", jalon.jal_projet));
@@ -42,14 +42,14 @@ namespace ServiceDA
             SqlCommand myCommand = new SqlCommand();
             myCommand.Connection = connection;
 
-            myCommand.CommandText = "SELECT [TJal_Id],[TJal_Libelle],[TJal_DateLivraisonTheorique],[TJal_Responsable],[TJal_DateLivraisonReel],[TJal_FK_TPro] FROM [TJalon]";
+            myCommand.CommandText = "SELECT [TJal_Id],[TJal_Libelle],[TJal_DateLivraisonPrevue],[TJal_Responsable],[TJal_DateLivraisonReel],[TJal_FK_TPro] FROM [TJalon]";
 
             SqlDataReader reader = myCommand.ExecuteReader();
             if (reader.HasRows)
             {
                 while (reader.Read())
                 {
-                    CJalon jalon = new CJalon((int)reader[0], reader[1].ToString(), (DateTime)reader[2], reader[3].ToString(), (DateTime)reader[4], (int)reader[5]);
+                    CJalon jalon = new CJalon((int)reader[0], reader[1].ToString(), (DateTime)reader[2], (int)reader[3], (DateTime)reader[4], (int)reader[5]);
                     listJalon.Add(jalon);
                 }
             }
@@ -72,14 +72,14 @@ namespace ServiceDA
             SqlCommand myCommand = new SqlCommand();
             myCommand.Connection = connection;
 
-            myCommand.CommandText = "SELECT [TJal_Id],[TJal_Libelle],[TJal_DateLivraisonTheorique],[TJal_Responsable],[TJal_DateLivraisonReel],[TJal_FK_TPro] FROM [TJalon] WHERE TJal_Id = @TJal_Id";
+            myCommand.CommandText = "SELECT [TJal_Id],[TJal_Libelle],[TJal_DateLivraisonPrevue],[TJal_Responsable],[TJal_DateLivraisonReel],[TJal_FK_TPro] FROM [TJalon] WHERE TJal_Id = @TJal_Id";
             myCommand.Parameters.Add(new SqlParameter("@TJal_Id", id));
 
             SqlDataReader reader = myCommand.ExecuteReader();
             if (reader.HasRows)
             {
                 reader.Read();
-                jalon = new CJalon((int)reader[0], reader[1].ToString(), (DateTime)reader[2], reader[3].ToString(), (DateTime)reader[4], (int)reader[5]);
+                jalon = new CJalon((int)reader[0], reader[1].ToString(), (DateTime)reader[2], (int)reader[3], (DateTime)reader[4], (int)reader[5]);
             }
             else
             {

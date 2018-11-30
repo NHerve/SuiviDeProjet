@@ -45,6 +45,7 @@
     <Compile Include="CProjet.cs" />
     <Compile Include="CTache.cs" />
     <Compile Include="CExigence.cs" />
+    <Compile Include="CTrigramme.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

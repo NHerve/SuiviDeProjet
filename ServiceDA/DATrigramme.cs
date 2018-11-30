@@ -8,21 +8,18 @@ using Bean;
 
 namespace ServiceDA
 {
-    public class DAProjet
+    class DATrigramme
     {
-
         SqlConnection connection = new SqlConnection("Data Source=MSI;Initial Catalog=SuiviProjet;Integrated Security=True");
 
-        public bool InsertProjet(CProjet projet)
+        public bool InsertTache(CTrigramme trigramme)
         {
             bool bRet = false;
             connection.Open();
             SqlCommand myCommand = new SqlCommand();
             myCommand.Connection = connection;
-            myCommand.CommandText = "INSERT INTO TProjet ([TPro_Nom],[TPro_Tri],[TPro_Responsable]) VALUES (@TPro_Nom,@TPro_Tri,@TPro_responsable)";
-            myCommand.Parameters.Add(new SqlParameter("@TPro_Nom", projet.pro_nom));
-            myCommand.Parameters.Add(new SqlParameter("@TPro_Tri", projet.pro_idTrigramme));
-            myCommand.Parameters.Add(new SqlParameter("@TPro_responsable", projet.pro_responsable));
+            myCommand.CommandText = "INSERT INTO TTrigramme ([TTri_Trigramme]) VALUES (@TTri_Trigramme)";
+            myCommand.Parameters.Add(new SqlParameter("@TTri_Trigramme", trigramme.tri_trigramme));
             if (myCommand.ExecuteNonQuery() > 0)
             {
                 bRet = true;
@@ -33,23 +30,23 @@ namespace ServiceDA
             return bRet;
         }
 
-        public List<CProjet> GetAllProjet()
+        public List<CTrigramme> GetAllTrigramme()
         {
-            List<CProjet> listProjet = new List<CProjet>();
+            List<CTrigramme> listTrigramme = new List<CTrigramme>();
 
             connection.Open();
             SqlCommand myCommand = new SqlCommand();
             myCommand.Connection = connection;
 
-            myCommand.CommandText = "SELECT [TPro_Id],[TPro_Nom],[TPro_Tri],[TPro_Responsable] FROM [TProjet]";
+            myCommand.CommandText = "SELECT [TTri_Id],[TTri_Trigramme] FROM [TTrigramme]";
 
             SqlDataReader reader = myCommand.ExecuteReader();
             if (reader.HasRows)
             {
                 while (reader.Read())
                 {
-                    CProjet projet = new CProjet((int)reader[0], reader[1].ToString(), reader[2].ToString(), (int)reader[3]);
-                    listProjet.Add(projet);
+                    CTrigramme trigramme = new CTrigramme((int)reader[0], reader[1].ToString());
+                    listTrigramme.Add(trigramme);
                 }
             }
             else
@@ -60,25 +57,25 @@ namespace ServiceDA
 
             connection.Close();
 
-            return listProjet;
+            return listTrigramme;
         }
 
-        public CProjet GetProjetById(int id)
+        public CTrigramme GetTrigrammeById(int id)
         {
-            CProjet projet = null;
+            CTrigramme trigramme = null;
 
             connection.Open();
             SqlCommand myCommand = new SqlCommand();
             myCommand.Connection = connection;
 
-            myCommand.CommandText = "SELECT [TPro_Id],[TPro_Nom],[TPro_Tri],[TPro_Responsable] FROM [TProjet] WHERE TPro_Id = @TPro_Id";
-            myCommand.Parameters.Add(new SqlParameter("@TPro_Id", id));
+            myCommand.CommandText = "SELECT [TTri_Id],[TTri_Trigramme] FROM [TTrigramme] WHERE TTri_Id = @TTri_Id";
+            myCommand.Parameters.Add(new SqlParameter("@TTri_Id", id));
 
             SqlDataReader reader = myCommand.ExecuteReader();
             if (reader.HasRows)
             {
                 reader.Read();
-                projet = new CProjet((int)reader[0], reader[1].ToString(), reader[2].ToString(), (int)reader[3]);
+                trigramme = new CTrigramme((int)reader[0], reader[1].ToString());
             }
             else
             {
@@ -88,8 +85,7 @@ namespace ServiceDA
 
             connection.Close();
 
-            return projet;
+            return trigramme;
         }
-
     }
 }
