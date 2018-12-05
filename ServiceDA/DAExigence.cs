@@ -8,7 +8,7 @@ using Bean;
 
 namespace ServiceDA
 {
-    class DAExigence
+    public class DAExigence
     {
         SqlConnection connection = new SqlConnection("Data Source=MSI;Initial Catalog=SuiviProjet;Integrated Security=True");
 
@@ -40,7 +40,38 @@ namespace ServiceDA
             SqlCommand myCommand = new SqlCommand();
             myCommand.Connection = connection;
 
-            myCommand.CommandText = "SELECT [TExi_Id],[TExi_Description],[TExi_Type],[TExi_FK_TPro] FROM [TJalon]";
+            myCommand.CommandText = "SELECT [TExi_Id],[TExi_Description],[TExi_Type],[TExi_FK_TPro] FROM [TExigence] WHERE TExi_Actif = 1";
+
+            SqlDataReader reader = myCommand.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    CExigence exigence = new CExigence((int)reader[0], reader[1].ToString(), (int)reader[2], (int)reader[3]);
+                    listExigence.Add(exigence);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No rows found.");
+            }
+            reader.Close();
+
+            connection.Close();
+
+            return listExigence;
+        }
+
+        public List<CExigence> GetExigenceForProjet(int idProjet)
+        {
+            List<CExigence> listExigence = new List<CExigence>();
+
+            connection.Open();
+            SqlCommand myCommand = new SqlCommand();
+            myCommand.Connection = connection;
+
+            myCommand.CommandText = "SELECT [TExi_Id],[TExi_Description],[TExi_Type],[TExi_FK_TPro] FROM [TExigence] WHERE TExi_FK_TPro = @idProjet AND TExi_Actif = 1";
+            myCommand.Parameters.Add(new SqlParameter("@idProjet", idProjet));
 
             SqlDataReader reader = myCommand.ExecuteReader();
             if (reader.HasRows)
@@ -70,7 +101,7 @@ namespace ServiceDA
             SqlCommand myCommand = new SqlCommand();
             myCommand.Connection = connection;
 
-            myCommand.CommandText = "SELECT [TExi_Id],[TExi_Description],[TExi_Type],[TExi_FK_TPro] FROM [TJalon] WHERE TExi_Id = @TExi_Id";
+            myCommand.CommandText = "SELECT [TExi_Id],[TExi_Description],[TExi_Type],[TExi_FK_TPro] FROM [TExigence] WHERE TExi_Id = @TExi_Id AND TExi_Actif = 1";
             myCommand.Parameters.Add(new SqlParameter("@TExi_Id", id));
 
             SqlDataReader reader = myCommand.ExecuteReader();
@@ -88,6 +119,22 @@ namespace ServiceDA
             connection.Close();
 
             return exigence;
+        }
+
+        public void DelExigence(int id)
+        {
+
+            connection.Open();
+            SqlCommand myCommand = new SqlCommand();
+            myCommand.Connection = connection;
+
+            myCommand.CommandText = "UPDATE TExigence set TExi_Actif = 0 WHERE TExi_Id = @TExi_Id";
+            myCommand.Parameters.Add(new SqlParameter("@TPExi_Id", id));
+
+            SqlDataReader reader = myCommand.ExecuteReader();
+            reader.Close();
+
+            connection.Close();
         }
     }
 }

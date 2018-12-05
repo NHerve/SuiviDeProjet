@@ -18,10 +18,10 @@ namespace ServiceDA
             connection.Open();
             SqlCommand myCommand = new SqlCommand();
             myCommand.Connection = connection;
-            myCommand.CommandText = "INSERT INTO TTache ([TTac_Libelle],[TTac_Description],[TTac_Responsable],[TTac_DateDebutPrevue],[TTac_NbJours],[TTac_FK_TTac],[TTac_DateDebutReel],[TTac_Statut] ,[TTac_FK_TJal]) VALUES (@TTac_Libelle,@TTac_Description,@TTac_Responsable,@TTac_DateDebutPrevue,@TTac_NbJours,@TTac_FK_TTac,@TTac_DateDebutReel,@TTac_Statut ,@TTac_FK_TJal)";
+            myCommand.CommandText = "INSERT INTO TTache ([TTac_Libelle],[TTac_Description],[TTac_FK_TTri],[TTac_DateDebutPrevue],[TTac_NbJours],[TTac_FK_TTac],[TTac_DateDebutReel],[TTac_Statut] ,[TTac_FK_TJal]) VALUES (@TTac_Libelle,@TTac_Description,@TTac_FK_TTri,@TTac_DateDebutPrevue,@TTac_NbJours,@TTac_FK_TTac,@TTac_DateDebutReel,@TTac_Statut ,@TTac_FK_TJal)";
             myCommand.Parameters.Add(new SqlParameter("@TTac_Libelle", tache.tac_libelle));
             myCommand.Parameters.Add(new SqlParameter("@TTac_Description", tache.tac_description));
-            myCommand.Parameters.Add(new SqlParameter("@TTac_Responsable", tache.tac_responsable));
+            myCommand.Parameters.Add(new SqlParameter("@TTac_FK_TTri", tache.tac_responsable));
             myCommand.Parameters.Add(new SqlParameter("@TTac_DateDebutPrevue", tache.tac_dateDebutPrevue));
             myCommand.Parameters.Add(new SqlParameter("@TTac_NbJours", tache.tac_nbJours));
             myCommand.Parameters.Add(new SqlParameter("@TTac_FK_TTac", tache.tac_tachePrecedente));
@@ -46,7 +46,7 @@ namespace ServiceDA
             SqlCommand myCommand = new SqlCommand();
             myCommand.Connection = connection;
 
-            myCommand.CommandText = "SELECT [TTac_Id],[TTac_Libelle],[TTac_Description],[TTac_Responsable],[TTac_DateDebutPrevue],[TTac_NbJours],[TTac_FK_TTac],[TTac_DateDebutReel],[TTac_Statut],[TTac_FK_TJal] FROM [TTache]";
+            myCommand.CommandText = "SELECT [TTac_Id],[TTac_Libelle],[TTac_Description],[TTac_FK_TTri],[TTac_DateDebutPrevue],[TTac_NbJours],[TTac_FK_TTac],[TTac_DateDebutReel],[TTac_Statut],[TTac_FK_TJal] FROM [TTache]";
 
             SqlDataReader reader = myCommand.ExecuteReader();
             if (reader.HasRows)
@@ -76,7 +76,7 @@ namespace ServiceDA
             SqlCommand myCommand = new SqlCommand();
             myCommand.Connection = connection;
 
-            myCommand.CommandText = "SELECT [TTac_Id],[TTac_Libelle],[TTac_Description],[TTac_Responsable],[TTac_DateDebutPrevue],[TTac_NbJours],[TTac_FK_TTac],[TTac_DateDebutReel],[TTac_Statut],[TTac_FK_TJal] FROM [TTache] WHERE TTac_Id = @TTac_Id";
+            myCommand.CommandText = "SELECT [TTac_Id],[TTac_Libelle],[TTac_Description],[TTac_FK_TTri],[TTac_DateDebutPrevue],[TTac_NbJours],[TTac_FK_TTac],[TTac_DateDebutReel],[TTac_Statut],[TTac_FK_TJal] FROM [TTache] WHERE TTac_Id = @TTac_Id";
             myCommand.Parameters.Add(new SqlParameter("@TTac_Id", id));
 
             SqlDataReader reader = myCommand.ExecuteReader();

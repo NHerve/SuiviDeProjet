@@ -71,3 +71,7 @@ D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\SuiviDeProjet\obj\Debug\SuiviDeProj
 D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\SuiviDeProjet\obj\Debug\SuiviDeProjet.csproj.CopyComplete
 D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\SuiviDeProjet\obj\Debug\SuiviDeProjet.dll
 D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\SuiviDeProjet\obj\Debug\SuiviDeProjet.pdb
+D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\SuiviDeProjet\bin\Bean.dll
+D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\SuiviDeProjet\bin\ServiceDA.dll
+D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\SuiviDeProjet\bin\Bean.pdb
+D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\SuiviDeProjet\bin\ServiceDA.pdb

@@ -19,10 +19,10 @@ namespace ServiceDA
             connection.Open();
             SqlCommand myCommand = new SqlCommand();
             myCommand.Connection = connection;
-            myCommand.CommandText = "INSERT INTO TProjet ([TPro_Nom],[TPro_Tri],[TPro_Responsable]) VALUES (@TPro_Nom,@TPro_Tri,@TPro_responsable)";
+            myCommand.CommandText = "INSERT INTO TProjet ([TPro_Nom],[TPro_TriProjet],[TPro_FK_TTri]) VALUES (@TPro_Nom,@TPro_TriProjet,@TPro_FK_TTri)";
             myCommand.Parameters.Add(new SqlParameter("@TPro_Nom", projet.pro_nom));
-            myCommand.Parameters.Add(new SqlParameter("@TPro_Tri", projet.pro_idTrigramme));
-            myCommand.Parameters.Add(new SqlParameter("@TPro_responsable", projet.pro_responsable));
+            myCommand.Parameters.Add(new SqlParameter("@TPro_TriProjet", projet.pro_idTrigramme));
+            myCommand.Parameters.Add(new SqlParameter("@TPro_FK_TTri", projet.pro_responsable));
             if (myCommand.ExecuteNonQuery() > 0)
             {
                 bRet = true;
@@ -41,7 +41,7 @@ namespace ServiceDA
             SqlCommand myCommand = new SqlCommand();
             myCommand.Connection = connection;
 
-            myCommand.CommandText = "SELECT [TPro_Id],[TPro_Nom],[TPro_Tri],[TPro_Responsable] FROM [TProjet]";
+            myCommand.CommandText = "SELECT [TPro_Id],[TPro_Nom],[TPro_TriProjet],[TPro_FK_TTri] FROM [TProjet] WHERE TPro_Actif = 1";
 
             SqlDataReader reader = myCommand.ExecuteReader();
             if (reader.HasRows)
@@ -71,7 +71,7 @@ namespace ServiceDA
             SqlCommand myCommand = new SqlCommand();
             myCommand.Connection = connection;
 
-            myCommand.CommandText = "SELECT [TPro_Id],[TPro_Nom],[TPro_Tri],[TPro_Responsable] FROM [TProjet] WHERE TPro_Id = @TPro_Id";
+            myCommand.CommandText = "SELECT [TPro_Id],[TPro_Nom],[TPro_TriProjet],[TPro_FK_TTri] FROM [TProjet] WHERE TPro_Id = @TPro_Id AND TPro_Actif = 1";
             myCommand.Parameters.Add(new SqlParameter("@TPro_Id", id));
 
             SqlDataReader reader = myCommand.ExecuteReader();
@@ -89,6 +89,22 @@ namespace ServiceDA
             connection.Close();
 
             return projet;
+        }
+
+        public void DelProjet(int id)
+        {
+
+            connection.Open();
+            SqlCommand myCommand = new SqlCommand();
+            myCommand.Connection = connection;
+
+            myCommand.CommandText = "UPDATE TProjet set TPro_Actif = 0 WHERE TPro_Id = @TPro_Id";
+            myCommand.Parameters.Add(new SqlParameter("@TPro_Id", id));
+
+            SqlDataReader reader = myCommand.ExecuteReader();
+            reader.Close();
+
+            connection.Close();
         }
 
     }

@@ -1,0 +1,6 @@
+D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\Bean\bin\Debug\Bean.dll
+D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\Bean\bin\Debug\Bean.pdb
+D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\Bean\obj\Debug\Bean.csprojAssemblyReference.cache
+D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\Bean\obj\Debug\Bean.csproj.CoreCompileInputs.cache
+D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\Bean\obj\Debug\Bean.dll
+D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\Bean\obj\Debug\Bean.pdb

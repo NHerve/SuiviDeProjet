@@ -50,7 +50,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -112,6 +114,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="CtrlExigence.ascx" />
+    <Content Include="CtrlProjet.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -125,6 +129,8 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="PageExigence.aspx" />
+    <Content Include="pageProjet.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -176,6 +182,20 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CtrlExigence.ascx.cs">
+      <DependentUpon>CtrlExigence.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CtrlExigence.ascx.designer.cs">
+      <DependentUpon>CtrlExigence.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlProjet.ascx.cs">
+      <DependentUpon>CtrlProjet.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CtrlProjet.ascx.designer.cs">
+      <DependentUpon>CtrlProjet.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -185,6 +205,20 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="PageExigence.aspx.cs">
+      <DependentUpon>PageExigence.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageExigence.aspx.designer.cs">
+      <DependentUpon>PageExigence.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pageProjet.aspx.cs">
+      <DependentUpon>pageProjet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pageProjet.aspx.designer.cs">
+      <DependentUpon>pageProjet.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -222,6 +256,16 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bean\Bean.csproj">
+      <Project>{e6415ff9-ac12-490b-85e0-64f6ac3ede09}</Project>
+      <Name>Bean</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiceDA\ServiceDA.csproj">
+      <Project>{4d852e8d-5b9a-4f08-a20d-92447455a109}</Project>
+      <Name>ServiceDA</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

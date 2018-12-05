@@ -1,0 +1,9 @@
+D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\ServiceDA\obj\Debug\ServiceDA.csprojAssemblyReference.cache
+D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\ServiceDA\obj\Debug\ServiceDA.csproj.CoreCompileInputs.cache
+D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\ServiceDA\bin\Debug\ServiceDA.dll
+D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\ServiceDA\bin\Debug\ServiceDA.pdb
+D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\ServiceDA\bin\Debug\Bean.dll
+D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\ServiceDA\bin\Debug\Bean.pdb
+D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\ServiceDA\obj\Debug\ServiceDA.csproj.CopyComplete
+D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\ServiceDA\obj\Debug\ServiceDA.dll
+D:\ESIMED\DotNet\SuiviDeProjet\SuiviDeProjet\ServiceDA\obj\Debug\ServiceDA.pdb

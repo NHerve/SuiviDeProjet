@@ -8,11 +8,11 @@ using Bean;
 
 namespace ServiceDA
 {
-    class DATrigramme
+    public class DATrigramme
     {
         SqlConnection connection = new SqlConnection("Data Source=MSI;Initial Catalog=SuiviProjet;Integrated Security=True");
 
-        public bool InsertTache(CTrigramme trigramme)
+        public bool InsertTrigramme(CTrigramme trigramme)
         {
             bool bRet = false;
             connection.Open();
@@ -30,9 +30,9 @@ namespace ServiceDA
             return bRet;
         }
 
-        public List<CTrigramme> GetAllTrigramme()
+        public Dictionary<int,string> GetAllTrigramme()
         {
-            List<CTrigramme> listTrigramme = new List<CTrigramme>();
+            Dictionary<int,string> listTrigramme = new Dictionary<int, string>();
 
             connection.Open();
             SqlCommand myCommand = new SqlCommand();
@@ -46,7 +46,7 @@ namespace ServiceDA
                 while (reader.Read())
                 {
                     CTrigramme trigramme = new CTrigramme((int)reader[0], reader[1].ToString());
-                    listTrigramme.Add(trigramme);
+                    listTrigramme.Add(trigramme.tri_id,trigramme.tri_trigramme);
                 }
             }
             else
@@ -70,6 +70,34 @@ namespace ServiceDA
 
             myCommand.CommandText = "SELECT [TTri_Id],[TTri_Trigramme] FROM [TTrigramme] WHERE TTri_Id = @TTri_Id";
             myCommand.Parameters.Add(new SqlParameter("@TTri_Id", id));
+
+            SqlDataReader reader = myCommand.ExecuteReader();
+            if (reader.HasRows)
+            {
+                reader.Read();
+                trigramme = new CTrigramme((int)reader[0], reader[1].ToString());
+            }
+            else
+            {
+                Console.WriteLine("No rows found.");
+            }
+            reader.Close();
+
+            connection.Close();
+
+            return trigramme;
+        }
+
+        public CTrigramme GetTrigrammeByTri(string tri)
+        {
+            CTrigramme trigramme = null;
+
+            connection.Open();
+            SqlCommand myCommand = new SqlCommand();
+            myCommand.Connection = connection;
+
+            myCommand.CommandText = "SELECT [TTri_Id],[TTri_Trigramme] FROM [TTrigramme] WHERE TTri_Trigramme = @TTri_Trigramme";
+            myCommand.Parameters.Add(new SqlParameter("@TTri_Trigramme", tri));
 
             SqlDataReader reader = myCommand.ExecuteReader();
             if (reader.HasRows)

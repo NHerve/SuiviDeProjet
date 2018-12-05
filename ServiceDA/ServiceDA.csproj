@@ -45,6 +45,7 @@
     <Compile Include="DAJalon.cs" />
     <Compile Include="DAProjet.cs" />
     <Compile Include="DATache.cs" />
+    <Compile Include="DATrigramme.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
