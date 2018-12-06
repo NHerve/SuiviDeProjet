@@ -8,7 +8,7 @@ using Bean;
 
 namespace ServiceDA
 {
-    class DAJalon
+    public class DAJalon
     {
         SqlConnection connection = new SqlConnection("Data Source=MSI;Initial Catalog=SuiviProjet;Integrated Security=True");
 
@@ -42,14 +42,14 @@ namespace ServiceDA
             SqlCommand myCommand = new SqlCommand();
             myCommand.Connection = connection;
 
-            myCommand.CommandText = "SELECT [TJal_Id],[TJal_Libelle],[TJal_DateLivraisonPrevue],[TJal_FK_TTri],[TJal_DateLivraisonReel],[TJal_FK_TPro] FROM [TJalon]";
+            myCommand.CommandText = "SELECT [TJal_Id],[TJal_Libelle],[TJal_DateLivraisonPrevue],[TJal_FK_TTri],[TJal_DateLivraisonReel],[TJal_FK_TPro] FROM [TJalon] WHERE TJal_Actif = 1";
 
             SqlDataReader reader = myCommand.ExecuteReader();
             if (reader.HasRows)
             {
                 while (reader.Read())
                 {
-                    CJalon jalon = new CJalon((int)reader[0], reader[1].ToString(), (DateTime)reader[2], (int)reader[3], (DateTime)reader[4], (int)reader[5]);
+                    CJalon jalon = new CJalon((int)reader[0], reader[1].ToString(), reader[2].ToString(), (int)reader[3], reader[4].ToString(), (int)reader[5]);
                     listJalon.Add(jalon);
                 }
             }
@@ -72,14 +72,14 @@ namespace ServiceDA
             SqlCommand myCommand = new SqlCommand();
             myCommand.Connection = connection;
 
-            myCommand.CommandText = "SELECT [TJal_Id],[TJal_Libelle],[TJal_DateLivraisonPrevue],[TJal_FK_TTri],[TJal_DateLivraisonReel],[TJal_FK_TPro] FROM [TJalon] WHERE TJal_Id = @TJal_Id";
+            myCommand.CommandText = "SELECT [TJal_Id],[TJal_Libelle],[TJal_DateLivraisonPrevue],[TJal_FK_TTri],[TJal_DateLivraisonReel],[TJal_FK_TPro] FROM [TJalon] WHERE TJal_Id = @TJal_Id AND TJal_Actif = 1";
             myCommand.Parameters.Add(new SqlParameter("@TJal_Id", id));
 
             SqlDataReader reader = myCommand.ExecuteReader();
             if (reader.HasRows)
             {
                 reader.Read();
-                jalon = new CJalon((int)reader[0], reader[1].ToString(), (DateTime)reader[2], (int)reader[3], (DateTime)reader[4], (int)reader[5]);
+                jalon = new CJalon((int)reader[0], reader[1].ToString(), reader[2].ToString(), (int)reader[3], reader[4].ToString(), (int)reader[5]);
             }
             else
             {
@@ -90,6 +90,54 @@ namespace ServiceDA
             connection.Close();
 
             return jalon;
+        }
+
+
+        public List<CJalon> GetJalonForProjet(int idProjet)
+        {
+            List<CJalon> listJalon = new List<CJalon>();
+
+            connection.Open();
+            SqlCommand myCommand = new SqlCommand();
+            myCommand.Connection = connection;
+
+            myCommand.CommandText = "SELECT [TJal_Id],[TJal_Libelle],[TJal_DateLivraisonPrevue],[TJal_FK_TTri],[TJal_DateLivraisonReel],[TJal_FK_TPro] FROM [TJalon] WHERE TJal_FK_TPro = @idProjet AND TJal_Actif = 1";
+            myCommand.Parameters.Add(new SqlParameter("@idProjet", idProjet));
+
+            SqlDataReader reader = myCommand.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    CJalon jalon = new CJalon((int)reader[0], reader[1].ToString(), reader[2].ToString(), (int)reader[3], reader[4].ToString(), (int)reader[5]);
+                    listJalon.Add(jalon);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No rows found.");
+            }
+            reader.Close();
+
+            connection.Close();
+
+            return listJalon;
+        }
+
+        public void DelJalon(int id)
+        {
+
+            connection.Open();
+            SqlCommand myCommand = new SqlCommand();
+            myCommand.Connection = connection;
+
+            myCommand.CommandText = "UPDATE TJalon set TJal_Actif = 0 WHERE TJal_Id = @TJal_Id";
+            myCommand.Parameters.Add(new SqlParameter("@TJal_Id", id));
+
+            SqlDataReader reader = myCommand.ExecuteReader();
+            reader.Close();
+
+            connection.Close();
         }
     }
 }

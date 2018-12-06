@@ -19,15 +19,31 @@ namespace SuiviDeProjet
         protected void Page_Load(object sender, EventArgs e)
         {
             int idProjet = int.Parse(Request.QueryString["idProjet"]);
-            CTrigramme trigrammeResponsable = new CTrigramme();
             CProjet projet = daProjet.GetProjetById(idProjet);
             CExigence exigence = daExigence.GetExigenceById(ctrlIdExigence);
 
             idExi.InnerText = exigence.exi_id.ToString();
+            if(exigence.exi_type.ToString() == "1")
+            {
+                typeExi.InnerText = "Fonctionnelle";
+            }
+            else if(exigence.exi_type.ToString() == "2")
+            {
+                typeExi.InnerText = "Données";
+            }else if(exigence.exi_type.ToString() == "3")
+            {
+                typeExi.InnerText = "Preformance";
+            }else if (exigence.exi_type.ToString() == "4")
+            {
+                typeExi.InnerText = "Interface utilisateur";
+            }else if (exigence.exi_type.ToString() == "5")
+            {
+                typeExi.InnerText = "Qualité";
+            }else if (exigence.exi_type.ToString() == "6")
+            {
+                typeExi.InnerText = "Services";
+            }
             DescExi.InnerText = exigence.exi_description.ToString();
-            proExi.InnerText = projet.pro_idTrigramme.ToString();
-
-            //FAIRE LE TRUC POUR LE TYPE D'EXI
         }
 
         protected void EditButton_Click(object sender, EventArgs e)
@@ -39,7 +55,7 @@ namespace SuiviDeProjet
         protected void DelButton_Click(object sender, EventArgs e)
         {
             int idExiDel = Int32.Parse(DelButton.CommandArgument.ToString());
-            daProjet.DelProjet(idExiDel);
+            daExigence.DelExigence(idExiDel);
             Response.Redirect(Request.RawUrl);
 
         }

@@ -10,16 +10,16 @@ namespace Bean
     {
         public int jal_id;
         public string jal_libelle;
-        public DateTime jal_dateLivraisonPrevue;
+        public string jal_dateLivraisonPrevue;
         public int jal_responsable;
-        public DateTime jal_dateLivraisonReel;
+        public string jal_dateLivraisonReel;
         public int jal_projet;
 
         public CJalon()
         {
         }
 
-        public CJalon(string jal_libelle, DateTime jal_dateLivraisonPrevue, int jal_responsable, DateTime jal_dateLivraisonReel, int jal_projet)
+        public CJalon(string jal_libelle, string jal_dateLivraisonPrevue, int jal_responsable, string jal_dateLivraisonReel, int jal_projet)
         {
             this.jal_libelle = jal_libelle;
             this.jal_dateLivraisonPrevue = jal_dateLivraisonPrevue;
@@ -28,7 +28,7 @@ namespace Bean
             this.jal_projet = jal_projet;
         }
 
-        public CJalon(int jal_id, string jal_libelle, DateTime jal_dateLivraisonPrevue, int jal_responsable, DateTime jal_dateLivraisonReel, int jal_projet)
+        public CJalon(int jal_id, string jal_libelle, string jal_dateLivraisonPrevue, int jal_responsable, string jal_dateLivraisonReel, int jal_projet)
         {
             this.jal_id = jal_id;
             this.jal_libelle = jal_libelle;

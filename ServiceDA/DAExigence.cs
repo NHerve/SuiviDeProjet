@@ -129,7 +129,7 @@ namespace ServiceDA
             myCommand.Connection = connection;
 
             myCommand.CommandText = "UPDATE TExigence set TExi_Actif = 0 WHERE TExi_Id = @TExi_Id";
-            myCommand.Parameters.Add(new SqlParameter("@TPExi_Id", id));
+            myCommand.Parameters.Add(new SqlParameter("@TExi_Id", id));
 
             SqlDataReader reader = myCommand.ExecuteReader();
             reader.Close();

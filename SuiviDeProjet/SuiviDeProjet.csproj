@@ -114,6 +114,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="CtrlJalon.ascx" />
     <Content Include="CtrlExigence.ascx" />
     <Content Include="CtrlProjet.ascx" />
     <Content Include="Default.aspx" />
@@ -181,6 +182,13 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlJalon.ascx.cs">
+      <DependentUpon>CtrlJalon.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CtrlJalon.ascx.designer.cs">
+      <DependentUpon>CtrlJalon.ascx</DependentUpon>
     </Compile>
     <Compile Include="CtrlExigence.ascx.cs">
       <DependentUpon>CtrlExigence.ascx</DependentUpon>

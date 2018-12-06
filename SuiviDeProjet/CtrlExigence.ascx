@@ -13,7 +13,6 @@ table, tr, th, td {
     <td id="idExi" runat="server">idExi</td> 
     <td id="DescExi" runat="server">descExi</td>
     <td id="typeExi" runat="server">typeExi</td>
-    <td id="proExi" runat="server">proExi</td> 
     <td>
         <asp:Button ID="EditButton" runat="server" Text="Editer" CommandArgument='<%#ctrlIdExigence%>' OnClick="EditButton_Click" />
 
