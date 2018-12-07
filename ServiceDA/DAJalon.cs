@@ -10,7 +10,7 @@ namespace ServiceDA
 {
     public class DAJalon
     {
-        SqlConnection connection = new SqlConnection("Data Source=MSI;Initial Catalog=SuiviProjet;Integrated Security=True");
+        SqlConnection connection = new SqlConnection("Data Source=.;Initial Catalog=SuiviProjet;Integrated Security=True");
 
         public bool InsertJalon(CJalon jalon)
         {

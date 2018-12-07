@@ -10,7 +10,7 @@ namespace ServiceDA
 {
     public class DATrigramme
     {
-        SqlConnection connection = new SqlConnection("Data Source=MSI;Initial Catalog=SuiviProjet;Integrated Security=True");
+        SqlConnection connection = new SqlConnection("Data Source=.;Initial Catalog=SuiviProjet;Integrated Security=True");
 
         public bool InsertTrigramme(CTrigramme trigramme)
         {

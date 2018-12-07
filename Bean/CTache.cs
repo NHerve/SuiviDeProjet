@@ -12,10 +12,10 @@ namespace Bean
         public string tac_libelle;
         public string tac_description;
         public int tac_responsable;
-        public DateTime tac_dateDebutPrevue;
+        public string tac_dateDebutPrevue;
         public int tac_nbJours;
         public int tac_tachePrecedente;
-        public DateTime tac_dateDebutReel;
+        public string tac_dateDebutReel;
         public int tac_statut;
         public int tac_jalon;
 
@@ -23,7 +23,7 @@ namespace Bean
         {
         }
 
-        public CTache(string tac_libelle, string tac_description, int tac_responsable, DateTime tac_dateDebutPrevue, int tac_nbJours, int tac_tachePrecedente, DateTime tac_dateDebutReel, int tac_statut, int tac_jalon)
+        public CTache(string tac_libelle, string tac_description, int tac_responsable, string tac_dateDebutPrevue, int tac_nbJours, int tac_tachePrecedente, string tac_dateDebutReel, int tac_statut, int tac_jalon)
         {
             this.tac_libelle = tac_libelle;
             this.tac_description = tac_description;
@@ -36,7 +36,7 @@ namespace Bean
             this.tac_jalon = tac_jalon;
         }
 
-        public CTache(int tac_id, string tac_libelle, string tac_description, int tac_responsable, DateTime tac_dateDebutPrevue, int tac_nbJours, int tac_tachePrecedente, DateTime tac_dateDebutReel, int tac_statut, int tac_jalon)
+        public CTache(int tac_id, string tac_libelle, string tac_description, int tac_responsable, string tac_dateDebutPrevue, int tac_nbJours, int tac_tachePrecedente, string tac_dateDebutReel, int tac_statut, int tac_jalon)
         {
             this.tac_id = tac_id;
             this.tac_libelle = tac_libelle;

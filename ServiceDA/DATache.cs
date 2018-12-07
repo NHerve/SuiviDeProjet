@@ -8,9 +8,9 @@ using Bean;
 
 namespace ServiceDA
 {
-    class DATache
+    public class DATache
     {
-        SqlConnection connection = new SqlConnection("Data Source=MSI;Initial Catalog=SuiviProjet;Integrated Security=True");
+        SqlConnection connection = new SqlConnection("Data Source=.;Initial Catalog=SuiviProjet;Integrated Security=True");
 
         public bool InsertTache(CTache tache)
         {
@@ -53,7 +53,7 @@ namespace ServiceDA
             {
                 while (reader.Read())
                 {
-                    CTache tache = new CTache((int)reader[0], reader[1].ToString(), reader[2].ToString(), (int)reader[3],(DateTime)reader[4],(int)reader[5], (int)reader[6], (DateTime)reader[7], (int)reader[8], (int)reader[9]);
+                    CTache tache = new CTache((int)reader[0], reader[1].ToString(), reader[2].ToString(), (int)reader[3], reader[4].ToString(), (int)reader[5], (int)reader[6], reader[7].ToString(), (int)reader[8], (int)reader[9]);
                     listTache.Add(tache);
                 }
             }
@@ -83,7 +83,7 @@ namespace ServiceDA
             if (reader.HasRows)
             {
                 reader.Read();
-                tache = new CTache((int)reader[0], reader[1].ToString(), reader[2].ToString(), (int)reader[3], (DateTime)reader[4], (int)reader[5], (int)reader[6], (DateTime)reader[7], (int)reader[8], (int)reader[9]);
+                tache = new CTache((int)reader[0], reader[1].ToString(), reader[2].ToString(), (int)reader[3], reader[4].ToString(), (int)reader[5], (int)reader[6], reader[7].ToString(), (int)reader[8], (int)reader[9]);
             }
             else
             {
@@ -94,6 +94,37 @@ namespace ServiceDA
             connection.Close();
 
             return tache;
+        }
+
+        public List<CTache> GetTacheByJalon(int idJalon)
+        {
+            List<CTache> listTache = new List<CTache>();
+
+            connection.Open();
+            SqlCommand myCommand = new SqlCommand();
+            myCommand.Connection = connection;
+
+            myCommand.CommandText = "SELECT [TTac_Id] ,[TTac_Libelle],[TTac_Description],[TTac_FK_TTri],[TTac_DateDebutPrevue] ,[TTac_NbJours] ,[TTac_FK_TTac] ,[TTac_DateDebutReel] ,[TTac_Statut] ,[TTac_FK_TJal] FROM [TTache] WHERE TTac_FK_TJal = @idJalon";
+            myCommand.Parameters.Add(new SqlParameter("@idJalon", idJalon));
+
+            SqlDataReader reader = myCommand.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    CTache tache = new CTache(int.Parse(reader[0].ToString()),reader[1].ToString(), reader[2].ToString(), int.Parse(reader[3].ToString()), reader[4].ToString() ,int.Parse(reader[5].ToString()), int.Parse(reader[6].ToString()), reader[7].ToString(), int.Parse(reader[8].ToString()), int.Parse(reader[9].ToString()));
+                    listTache.Add(tache);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No rows found.");
+            }
+            reader.Close();
+
+            connection.Close();
+
+            return listTache;
         }
     }
 }

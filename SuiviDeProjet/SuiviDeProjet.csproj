@@ -114,6 +114,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="CtrlTache.ascx" />
     <Content Include="CtrlJalon.ascx" />
     <Content Include="CtrlExigence.ascx" />
     <Content Include="CtrlProjet.ascx" />
@@ -131,6 +132,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="PageExigence.aspx" />
+    <Content Include="pageTache.aspx" />
     <Content Include="pageProjet.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -183,6 +185,13 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CtrlTache.ascx.cs">
+      <DependentUpon>CtrlTache.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CtrlTache.ascx.designer.cs">
+      <DependentUpon>CtrlTache.ascx</DependentUpon>
+    </Compile>
     <Compile Include="CtrlJalon.ascx.cs">
       <DependentUpon>CtrlJalon.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -220,6 +229,13 @@
     </Compile>
     <Compile Include="PageExigence.aspx.designer.cs">
       <DependentUpon>PageExigence.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pageTache.aspx.cs">
+      <DependentUpon>pageTache.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pageTache.aspx.designer.cs">
+      <DependentUpon>pageTache.aspx</DependentUpon>
     </Compile>
     <Compile Include="pageProjet.aspx.cs">
       <DependentUpon>pageProjet.aspx</DependentUpon>

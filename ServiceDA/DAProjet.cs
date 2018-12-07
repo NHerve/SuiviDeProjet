@@ -11,7 +11,7 @@ namespace ServiceDA
     public class DAProjet
     {
 
-        SqlConnection connection = new SqlConnection("Data Source=MSI;Initial Catalog=SuiviProjet;Integrated Security=True");
+        SqlConnection connection = new SqlConnection("Data Source=.;Initial Catalog=SuiviProjet;Integrated Security=True");
 
         public bool InsertProjet(CProjet projet)
         {

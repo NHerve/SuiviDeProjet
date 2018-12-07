@@ -42,8 +42,8 @@ namespace SuiviDeProjet
 
         protected void EditButton_Click(object sender, EventArgs e)
         {
-            //int idProjet = Int32.Parse(EditButton.CommandArgument.ToString());
-            //Response.Redirect("PageExigence.aspx?idProjet="+ idProjet);
+            int idJalon = Int32.Parse(EditButton.CommandArgument.ToString());
+            Response.Redirect("PageTache.aspx?idJalon=" + idJalon);
         }
 
         protected void DelButton_Click(object sender, EventArgs e)
